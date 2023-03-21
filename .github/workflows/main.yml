@@ -14,3 +14,7 @@ jobs:
     - name: Fresh install
       run: |
           sudo python setup.py install
+    - name: Start services
+      run: |
+          sudo systemctl daemon-reload
+          sudo service chronos start
