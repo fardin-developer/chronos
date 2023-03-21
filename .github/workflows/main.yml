@@ -1,0 +1,14 @@
+name: Test deploy on AWS runner
+on: 
+   push: 
+       branches: ['master']
+jobs:
+   start-deploy:
+    runs-on: [self-hosted]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+          aws-region: us-east-1
