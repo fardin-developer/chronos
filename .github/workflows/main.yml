@@ -12,3 +12,5 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v2
       with:
           aws-region: us-east-1
+          
+          
