@@ -8,8 +8,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Cleanup old binaries
+    - name: Cleanup services and binaries
       run: |
+          sudo service chronos stop
           if [ -f files.txt ]; then sudo rm $(cat files.txt); fi
     - name: Fresh install
       run: |
