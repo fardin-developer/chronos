@@ -1,0 +1,11 @@
+version: "3"
+services:
+  chronos:
+    build: .
+    ports:
+      - "80:80"
+    container_name: chronos
+
+networks:
+  default:
+    attachable: true
