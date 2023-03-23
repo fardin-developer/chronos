@@ -53,9 +53,8 @@ chronos log directory: `/var/log/chronos`
 
 chronos database directory: `/home/pi/chronos_db`
 
-#### Add steps to bring up a git runner here
-
 chronos config path: `/etc/chronos_config.json`
+
 #### Managing ####
 Chronos has a daemon which controlled by the following command:
 
@@ -68,3 +67,13 @@ Web UI managed by uwsgi app server:
 SocketIO server managing:
 
 `# service uwsgi start|stop|restart|reload socketio_server`
+
+#### Add steps to bring up a git runner here
+Follow steps to add the runner as shown in git
+- Install docker.io and docker-compose on the Runner
+  - sudo apt update
+  - sudo apt install docker.io
+  - curl -L https://github.com/linuxserver/docker-docker-compose/releases/download/1.28.5-ls32/docker-compose-armhf | sudo tee /usr/local/bin/docker-compose >/dev/null
+  - ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+  - sudo chmod +x /usr/bin/docker-compose
+
