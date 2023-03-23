@@ -72,8 +72,5 @@ SocketIO server managing:
 Follow steps to add the runner as shown in git
 - Install docker.io and docker-compose on the Runner
   - sudo apt update
-  - sudo apt install docker.io
-  - curl -L https://github.com/linuxserver/docker-docker-compose/releases/download/1.28.5-ls32/docker-compose-armhf | sudo tee /usr/local/bin/docker-compose >/dev/null
-  - ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-  - sudo chmod +x /usr/bin/docker-compose
-
+  - sudo apt install docker.io docker-compose -y
+  
