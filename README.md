@@ -53,6 +53,8 @@ chronos log directory: `/var/log/chronos`
 
 chronos database directory: `/home/pi/chronos_db`
 
+#### Add steps to bring up a git runner here
+
 chronos config path: `/etc/chronos_config.json`
 #### Managing ####
 Chronos has a daemon which controlled by the following command:
