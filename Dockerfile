@@ -12,8 +12,8 @@ run pip install gevent
 # Try not to touch the above since installing gvenet takes too long
 run pip install python-engineio==3.11.2 python-socketio==4.4.0
 
-copy chronos/. .
-copy chronos/chronos.sql /home/pi/chronos_db/
+copy . .
+copy chronos.sql /home/pi/chronos_db/
 run python setup.py install
 run apt-get install vim -y
 run rm /etc/nginx/sites-enabled/default
