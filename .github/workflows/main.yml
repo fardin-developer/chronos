@@ -10,14 +10,8 @@ jobs:
       uses: actions/checkout@v3
     - name: Cleanup services and binaries
       run: |
-          sudo service chronos stop
-          if [ -f files.txt ]; then sudo rm $(cat files.txt); fi
-    - name: Fresh install
-      run: |
-          sudo python setup.py install
+          sudo docker rm -f chronos
     - name: Start services
       run: |
-          sudo systemctl daemon-reload
-          sudo service chronos start
-          
+          sudo docker-compose up -d --build
           
