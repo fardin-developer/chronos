@@ -309,6 +309,7 @@ class Chronos(object):
 
     @staticmethod
     def _read_temperature_sensor(sensor_id):
+        return 50
         device_file = os.path.join("/sys/bus/w1/devices", sensor_id, "w1_slave")
         while True:
             try:
