@@ -11,17 +11,13 @@ run pip install gevent
 
 # Try not to touch the above since installing gvenet takes too long
 run pip install python-engineio==3.11.2 python-socketio==4.4.0
+run apt-get install vim -y
 
 copy . .
 copy chronos.sql /home/pi/chronos_db/
 run python setup.py install
-run apt-get install vim -y
 run rm /etc/nginx/sites-enabled/default
 run ln -s /etc/nginx/sites-enabled/chronos_conf /etc/nginx/sites-enabled/default
+run chmod +x entrypoint.sh
 
-run uwsgi --ini /etc/uwsgi/apps-enabled/socketio_server.ini &
-run uwsgi --ini /etc/uwsgi/apps-enabled/chronos.ini &
-#run service chronos start
-#run service nginx start
-
-entrypoint [ "tail", "-f", "/dev/null" ]
+entrypoint [ "./entrypoint.sh" ]
