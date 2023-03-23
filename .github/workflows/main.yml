@@ -15,6 +15,5 @@ jobs:
       run: |
           pwd
           ls -al
-          cd _work/chronos/chronos
           sudo docker-compose up -d --build
           
