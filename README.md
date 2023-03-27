@@ -62,11 +62,11 @@ Chronos has a daemon which controlled by the following command:
 
 Web UI managed by uwsgi app server:
 
-`# service uwsgi start|stop|restart|reload chronos`
+`# service uwsgi start|stop|restart|reload`
 
 SocketIO server managing:
 
-`# service uwsgi start|stop|restart|reload socketio_server`
+`# service uwsgi-socketio start|stop|restart|reload`
 
 #### Add steps to bring up a git runner here
 Follow steps to add the runner as shown in git
