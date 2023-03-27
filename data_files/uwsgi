@@ -18,6 +18,8 @@ RUN_DIR=/var/run/uwsgi
 LOG_DIR=/var/log/uwsgi
 NAME=uwsgi
 DESC=uwsgi
+OWNER=www-data
+GROUP=www-data
 
 [[ -x $DAEMON ]] || exit 0
 [[ -d $RUN_DIR ]] || mkdir $RUN_DIR && chown $OWNER:$GROUP $RUN_DIR
@@ -39,7 +41,7 @@ do_start()
 {
     local PIDFILE=$RUN_DIR/$NAME.pid
     local START_OPTS=" \
-        --ini /etc/uwsgi/apps-enabled/chronos.ini\
+        --ini /etc/uwsgi/apps-enabled/chronos.ini \
         --pidfile $PIDFILE \
         --daemonize $LOG_DIR/uwsgi.log"
     if do_pid_check $PIDFILE; then
