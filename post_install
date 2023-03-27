@@ -10,6 +10,7 @@ crontab_command='0 0 * * * python -c "from chronos.lib.db_queries import keep_hi
 
 chmod 0755 "/etc/init.d/chronos"
 chmod 0755 "/etc/init.d/uwsgi"
+chmod 0755 "/etc/init.d/uwsgi-socketio"
 groupadd -f $chronos_group_name
 chown pi:$chronos_group_name $chronos_config_path
 
