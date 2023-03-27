@@ -41,7 +41,7 @@ setup(
     },
     data_files=[
         ("/etc", ["data_files/chronos_config.json"]),
-        ("/etc/init.d", ["data_files/chronos"]),
+        ("/etc/init.d", ["data_files/chronos", "data_files/uwsgi"]),
         ("/var/www", ["data_files/chronos.wsgi"]),
         ("/etc/nginx/sites-enabled/", ["data_files/chronos.conf"]),
         ("/etc/uwsgi/apps-enabled/", ["data_files/chronos.ini", "data_files/socketio_server.ini"])
