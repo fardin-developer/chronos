@@ -3,7 +3,7 @@ import sys
 import time
 import serial
 import thread
-import urllib2
+import requests
 from sqlalchemy import desc
 from sqlalchemy.sql import func
 from datetime import datetime, timedelta
@@ -14,7 +14,10 @@ from chronos.lib import db, db_queries, socketio_client
 from chronos.lib.root_logger import root_logger as logger
 from apscheduler.schedulers.background import BackgroundScheduler
 
-WEATHER_URL = "http://wx.thomaslivestock.com/downld02.txt"
+WEATHER_URL = "https://test.barnreportpro.com/api/live_data/divy"
+WEATHER_HEADERS = {
+    "Authorization": "Bearer -_--8-_FLa0Ny995DE__--Hd._L6si4-CB3W-_.O4D_x.UOyP9n-zx_n9sp10H07cC-_.7g-5s96.CJ7tU.E699K8..A8_7-l9hHs._b93_9_.X.v04.5erQbM.-7_6R"    
+}
 WINTER, SUMMER, TO_WINTER, TO_SUMMER, FROM_WINTER, FROM_SUMMER = 0, 1, 2, 3, 4, 5
 OFF, ON = 0, 1
 MANUAL_OFF, MANUAL_ON, MANUAL_AUTO = 2, 1, 0
@@ -356,11 +359,18 @@ class Chronos(object):
     def get_data_from_web(self):
         logger.debug("Retrieve data from web.")
         try:
-            content = urllib2.urlopen(WEATHER_URL, timeout=5)
-            last_line = content.readlines()[-1].split()
-            wind_speed = float(last_line[7])
-            outside_temp = float(last_line[2])
-        except (ValueError, IOError, urllib2.HTTPError, urllib2.URLError):
+            #content = urllib2.urlopen(WEATHER_URL, timeout=5)
+            data = requests.get(WEATHER_URL, headers=WEATHER_HEADERS).json()
+            for zone in data['zones']:
+                for param in zone['parameters']:
+                    if param['name'] == 'RAIN':
+                        rain_value = param['value']
+                    elif param['name'] == 'WIND':
+                        wind_speed = float(param['value'])
+                    elif param['name'] == 'EXT1':
+                        outside_temp = float(param['value'])
+        except Exception as e:
+            logger.error(e)
             logger.error("Unable to get data from the website. Reading previous value from the DB.")
             with db.session_scope() as session:
                 wind_speed, outside_temp = session.query(
