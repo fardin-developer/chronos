@@ -368,7 +368,7 @@ class Chronos(object):
                     elif param['name'] == 'WIND':
                         wind_speed = float(param['value'])
                     elif param['name'] == 'EXT1':
-                        outside_temp = float(param['value'])
+                        outside_temp = round(float(param['value']), 1)
         except Exception as e:
             logger.error(e)
             logger.error("Unable to get data from the website. Reading previous value from the DB.")
