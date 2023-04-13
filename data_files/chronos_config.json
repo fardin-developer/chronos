@@ -1,13 +1,13 @@
 {
     "serial": {
         "baudr": 19200,
-        "portname": "/dev/ttyACM0"
+        "portname": "/tmp/ptyp1"
     },
     "modbus": {
         "baudr": 9600,
-        "portname": "/dev/ttyUSB0",
-        "parity": "E",
-        "timeout": 1,
+        "portname": "/tmp/ptyp0",
+        "parity": "N",
+        "timeout": 2,
         "method": "rtu",
         "unit": 1
     },
