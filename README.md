@@ -104,7 +104,9 @@ python2 working-sync-server.py /tmp/ttyp0 &
 ```
 
 Actual device to simulator mappings are as follows, the chronos_config.json needs to be changed on the automation QA server to run as follows:
+
 Boiler --> /dev/ttyUSB0 --> /tmp/ptyp0
+
 Chillers --> /dev/ttyACM0 --> /tmp/ptyp1
 
 
