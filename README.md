@@ -68,9 +68,44 @@ SocketIO server managing:
 
 `# service uwsgi-socketio start|stop|restart|reload`
 
-#### Add steps to bring up a git runner here
-Follow steps to add the runner as shown in git
+## AUTOMATION & TESTING
+
+This repo uses a self-hosted git-runner on AWS. The .github/workflows/main.yaml file automatically kicks off a new deployment whenever any code changes have been committed to the master branch.
+
+Follow these steps to add a new runner as shown in git
+https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners
+
 - Install docker.io and docker-compose on the Runner
   - sudo apt update
   - sudo apt install docker.io docker-compose -y
   
+### SIMULATORS
+
+Chronos talks to the following components on the RPI. 
+
+These devices are specified in data_files/chronos_config.json
+- Boiler via modbus connected to /dev/ttyUSB0
+- Chillers via relays talking to serial port /dev/ttyACM0
+  
+In order to simulate the above devices, we use the following two components:
+- socat
+- working-sync-server.py
+
+The relays to the chillers are emulated using socat. socat creates virtual pty devices that can respond as serial ports.
+The following command in entrypoint.sh brings up a virtual ptyp1 device to respond to relays
+```
+socat -d -d PTY,link=/tmp/ptyp1,raw,echo=0 PTY,link=/tmp/ttyp1,raw,echo=0 &
+```
+
+The following commands in entrypoint.sh bring up a virtual ptyp0 device and then runs working-sync-server to emulate the boiler.
+```
+socat -d -d PTY,link=/tmp/ptyp0,raw,echo=0 PTY,link=/tmp/ttyp0,raw,echo=0 &
+python2 working-sync-server.py /tmp/ttyp0 &
+```
+
+Actual device to simulator mappings are as follows, the chronos_config.json needs to be changed on the automation QA server to run as follows:
+Boiler --> /dev/ttyUSB0 --> /tmp/ptyp0
+Chillers --> /dev/ttyACM0 --> /tmp/ptyp1
+
+
+
