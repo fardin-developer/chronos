@@ -42,11 +42,11 @@ Boiler --> /dev/ttyUSB0 --> /tmp/ptyp0
 Chillers --> /dev/ttyACM0 --> /tmp/ptyp1
 
 #### Test water temperature
-In order to provide a test incoming water temperature, use:
+The water temperature is provided in Centigrade. In order to provide a test incoming water temperature of 100C, use:
 ```
 echo -e "YES\nt=100" > /tmp/water_in
 ```
-In order to provide a test out water temperature, use:
+In order to provide a test out water temperature of 140C, use:
 ```
 echo -e "YES\nt=140" > /tmp/water_out
 ```
