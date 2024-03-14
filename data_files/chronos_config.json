@@ -12,8 +12,10 @@
         "unit": 1
     },
     "sensors": {
-        "in_id": "28-00000677d509",
-        "out_id": "28-0000067841b0"
+        "in_id": "/tmp/water_in",
+        "_in_id": "28-00000677d509",
+        "out_id": "/tmp/water_out",
+        "_out_id": "28-0000067841b0"
     },
     "files": {
         "log_path": "/var/log/chronos/chronos.log"

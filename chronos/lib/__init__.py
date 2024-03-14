@@ -14,7 +14,10 @@ from chronos.lib import db, db_queries, socketio_client
 from chronos.lib.root_logger import root_logger as logger
 from apscheduler.schedulers.background import BackgroundScheduler
 
-WEATHER_URL = "https://test.barnreportpro.com/api/live_data/divy"
+#WEATHER_URL = "https://test.barnreportpro.com/api/live_data/divy"
+WEATHER_URL = "https://barnreportpro.com/api/live_data/tlco"
+
+
 WEATHER_HEADERS = {
     "Authorization": "Bearer -_--8-_FLa0Ny995DE__--Hd._L6si4-CB3W-_.O4D_x.UOyP9n-zx_n9sp10H07cC-_.7g-5s96.CJ7tU.E699K8..A8_7-l9hHs._b93_9_.X.v04.5erQbM.-7_6R"    
 }
@@ -312,8 +315,8 @@ class Chronos(object):
 
     @staticmethod
     def _read_temperature_sensor(sensor_id):
-        return 50
-        device_file = os.path.join("/sys/bus/w1/devices", sensor_id, "w1_slave")
+        #return 50
+        device_file = sensor_id #os.path.join("/sys/bus/w1/devices", sensor_id, "w1_slave")
         while True:
             try:
                 with open(device_file) as content:

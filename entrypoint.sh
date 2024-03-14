@@ -8,6 +8,11 @@ sudo chown -R pi:pi /home/pi
 sleep 2
 mkdir /var/log/uwsgi
 /usr/local/bin/uwsgi --ini /etc/uwsgi/apps-enabled/socketio_server.ini --pidfile /var/run/uwsgi/uwsgi-socketio.pid --daemonize /var/log/uwsgi/uwsgi-socketio.log
+
+# Added to simulate water temperature in and out
+echo -e "YES\nt=100" > /tmp/water_in
+echo -e "YES\nt=150" > /tmp/water_out
+
 service uwsgi start
 service nginx start
 service chronos start
