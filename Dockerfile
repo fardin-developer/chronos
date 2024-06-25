@@ -5,7 +5,7 @@ RUN echo "deb http://legacy.raspbian.org/raspbian stretch main contrib non-free 
 run apt-get update -y && apt-get install python2.7 python-pip cron sqlite3 nginx libssl-dev vim -y
 run useradd pi
 run mkdir -p /home/pi/chronos_db
-run CFLAGS="-I/usr/include/openssl" && LDFLAGS="-L/usr/lib/arm-linux-gnueabihf" && UWSGI_PROFILE_OVERRIDE=ssl=true && pip install -I --no-binary=:all: --no-cache-dir uwsgi==2.0.20
+run CFLAGS="-I/usr/include/openssl" && LDFLAGS="-L/usr/lib/arm-linux-gnueabihf" && UWSGI_PROFILE_OVERRIDE=ssl=true && pip install -trusted-host pypi.org --trusted-host files.pythonhosted.or -I --no-binary=:all: --no-cache-dir uwsgi==2.0.20
 run pip install flask pyserial pymodbus APScheduler==3.6.3
 run pip install --upgrade setuptools
 run pip install sqlalchemy python-socketio==0.4.1 socketIO_client six==1.15.0
