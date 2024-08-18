@@ -60,14 +60,6 @@ def get_chronos_status():
 @app.route("/season_templates")
 def get_rendered_season_templates():
     data = get_data()
-    form = render_template("form.html", data=data)
-    stats = render_template("stats.html", data=data)
-    system_map = render_template("system_map.html", data=data)
-    data = {
-        "form": form,
-        "stats": stats,
-        "system_map": system_map
-    }
     return jsonify(data)
 
 
@@ -104,16 +96,7 @@ def switch_mode():
 @app.route("/")
 def index():
     data = get_data()
-    mode = int(data["results"]["mode"])
-    if mode == WINTER:
-        resp = render_template("winter.html", data=data)
-    elif mode == SUMMER:
-        resp = render_template("summer.html", data=data)
-    elif mode == TO_WINTER:
-        resp = render_template("to_winter.html", data=data)
-    elif mode == TO_SUMMER:
-        resp = render_template("to_summer.html", data=data)
-    return resp
+    return jsonify(data)
 
 
 @app.route("/update_state", methods=["POST"])
@@ -127,14 +110,14 @@ def update_state():
 
 @app.route("/winter")
 def winter():
-    data = get_data()
-    return render_template("winter.html", data=data)
+    data = get_data() 
+    return jsonify(data)
 
 
 @app.route("/summer")
 def summer():
-    data = get_data()
-    return render_template("summer.html", data=data)
+    data = get_data()  # Get data from the get_data function
+    return jsonify(data)  # Use jsonify to return JSON response
 
 
 @app.route("/chart_data")

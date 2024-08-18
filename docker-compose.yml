@@ -3,9 +3,9 @@ services:
   chronos:
     build: .
     ports:
-      - "80:80"
+      - "90:80"
     privileged: true
-    container_name: chronos
+    container_name: chronos4
 
 networks:
   default:

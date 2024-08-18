@@ -6,6 +6,83 @@
 Chronos is a boiling/cooling water system working on Raspberry Pi. Chronos has a web interface to control the system and tracking for the state.
 
 ![Alt text](http://i.imgur.com/8II1ydG.png "A screenshot of the Chronos web interface")
+## Frontend and Backend Separation
+
+### Overview
+
+The Chronos project has been refactored to separate the frontend and backend components. The backend operates as a standalone service providing APIs, while the frontend is handled separately.
+
+### A screenshot of API response of Chronos
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/1*p5MTHzrfaLYycSmZFSdmoA.png "A screenshot of API response of Chronos")
+
+### API Endpoints
+
+The backend provides the following API endpoints:
+
+#### Base URL
+- **Base URL**: `http://<backend-server-url>:90`
+
+#### Endpoints
+
+- **Get System Data**:
+  - **URL**: `/`
+  - **Method**: `GET`
+  - **Description**: Retrieves the current system data, including temperature settings and mode status.
+  - **Response**: JSON object containing system data.
+
+- **Get Rendered Season Templates**:
+  - **URL**: `/season_templates`
+  - **Method**: `GET`
+  - **Description**: Retrieves data for rendering season templates.
+  - **Response**: JSON object with system results, activity stream, and efficiency details.
+
+- **Download Log**:
+  - **URL**: `/download_log`
+  - **Method**: `GET`
+  - **Description**: Downloads the system log as a CSV file.
+  - **Response**: CSV file download.
+
+- **Update Settings**:
+  - **URL**: `/update_settings`
+  - **Method**: `POST`
+  - **Description**: Updates system settings based on provided form data.
+  - **Request Body**: Form data with settings to update.
+  - **Response**: JSON object with the updated form data.
+
+- **Switch Mode**:
+  - **URL**: `/switch_mode`
+  - **Method**: `POST`
+  - **Description**: Switches the system mode between winter and summer.
+  - **Request Body**: Form data with the new mode (`TO_WINTER` or `TO_SUMMER`).
+  - **Response**: JSON object with error status and mode switch lockout time.
+
+- **Update Device State**:
+  - **URL**: `/update_state`
+  - **Method**: `POST`
+  - **Description**: Updates the state of a specific device based on provided form data.
+  - **Request Body**: Form data with device number and manual override value.
+  - **Response**: Empty response.
+
+- **Winter Mode Data**:
+  - **URL**: `/winter`
+  - **Method**: `GET`
+  - **Description**: Retrieves data specific to the winter mode.
+  - **Response**: JSON object with system data.
+
+- **Summer Mode Data**:
+  - **URL**: `/summer`
+  - **Method**: `GET`
+  - **Description**: Retrieves data specific to the summer mode.
+  - **Response**: JSON object with system data.
+
+- **Chart Data**:
+  - **URL**: `/chart_data`
+  - **Method**: `GET`
+  - **Description**: Retrieves data for charts.
+  - **Response**: JSON object containing chart data.
+  
+
+![Alt text](http://i.imgur.com/8II1ydG.png "A screenshot of the Chronos web interface")
 ### Summary of set up ###
 
 #### Installation with Docker ####
