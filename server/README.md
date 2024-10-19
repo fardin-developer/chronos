@@ -5,43 +5,22 @@
 
 Chronos is a boiling/cooling water system working on Raspberry Pi. Chronos has a web interface to control the system and tracking for the state.
 
-![Alt text](https://cdn-images-1.medium.com/v2/resize:fit:800/1*Yk7RuJxn_PqkQ146k9tRug.png "A screenshot of the Chronos web interface")
+![Alt text](http://i.imgur.com/8II1ydG.png "A screenshot of the Chronos web interface")
 ## Frontend and Backend Separation
 
 ### Overview
 
-The Chronos project has been refactored to separate the frontend and backend components. The backend operates as a standalone service providing APIs, while the frontend is handled separately. 
+The Chronos project has been refactored to separate the frontend and backend components. The backend operates as a standalone service providing APIs, while the frontend is handled separately.
 
-### New Project Structure  
-
-The **Chronos2** folder contains both the **server** (backend) and **client** (frontend). The **client** is built with **React**. The project is configured to run both components **simultaneously** using a single Docker command.  
-
-### Summary of set up ###
-
-#### Installation with Docker ####
-This repository consists of a docker container that has all the dependencies and simulators built-in. Just run using these two commands:
-```
-sudo docker-compose up --build -d chronos
-sudo docker restart chronosBackend
-```
-
-
-> **Important:**  
-> <span style="color:red;">**The backend service must be restarted manually using:**</span>  
-> ```bash  
-> sudo docker restart chronosBackend  
-> ```  
-> **Make sure to wait until the restart completes to ensure everything runs correctly.**
-
-
-
+### A screenshot of API response of Chronos
+![Alt text](https://miro.medium.com/v2/resize:fit:720/format:webp/1*p5MTHzrfaLYycSmZFSdmoA.png "A screenshot of API response of Chronos")
 
 ### API Endpoints
 
 The backend provides the following API endpoints:
 
 #### Base URL
-- **Base URL**: `http://<backend-server-url>:80`
+- **Base URL**: `http://<backend-server-url>:90`
 
 #### Endpoints
 
@@ -103,6 +82,7 @@ The backend provides the following API endpoints:
   - **Response**: JSON object containing chart data.
   
 
+![Alt text](http://i.imgur.com/8II1ydG.png "A screenshot of the Chronos web interface")
 
 ### SIMULATORS
 
@@ -203,3 +183,7 @@ https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-r
 - Install docker.io and docker-compose on the Runner
   - sudo apt update
   - sudo apt install docker.io docker-compose -y
+  
+
+
+

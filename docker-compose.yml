@@ -1,11 +1,22 @@
 version: "3"
 services:
-  chronos:
-    build: .
+  server:
+    build:
+      context: ./server
     ports:
-      - "90:80"
+      - "80:80"
     privileged: true
-    container_name: chronos4
+    container_name: chronosBackend
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - server
 
 networks:
   default:
